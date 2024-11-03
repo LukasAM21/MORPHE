@@ -60,7 +60,7 @@
         <button onclick="submitGuess()">Vložit</button>
     </div>
 
-    <p>Last update: 3.11.2024 18:19</p>
+    <p>Last update: 3.11.2024 18:26</p>
     <p>© Lukáš Maronek 2024</p>
 
     <script>
@@ -191,6 +191,7 @@
                 currentNumber = randomNumber;
                 if (currentCase === "Nominative"){
                     currentNumber = "Plural";
+                    console.log("Current case is", currentCase, "current number should be now plural and is:", currentNumber); // Log the chosen case
                 }
             } else {
                 console.error("No cases selected.");
