@@ -121,8 +121,8 @@
 
     <!-- Navigation Menu -->
     <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
+        <a href="index.html">Domov</a>
+        <a href="about.html">O nás</a>
         <a href="code.html">Quiz</a>
     </div>
 
@@ -134,36 +134,36 @@
 
     <!-- Main Content Section -->
     <div class="content">
-        <h2>Select Your Practice Options</h2>
-        <p>Welcome to the MORPHE Quiz! Select declensions, cases, and themes to practice your knowledge of Latin medical terminology.</p>
+        <h2>Zvolte si procvičované oblasti</h2>
+        <p>Vítejte v MORPHE Quizu! Vyberte deklinace, pády a témata, která chcete procvičovat.</p>
 
-        <h3>Choose Declensions:</h3>
-        <label><input type="checkbox" class="declensionCheckbox" value="I"> Declinatio I</label><br>
-        <label><input type="checkbox" class="declensionCheckbox" value="II"> Declinatio II</label><br>
-        <label><input type="checkbox" class="declensionCheckbox" value="III"> Declinatio III</label><br>
-        <label><input type="checkbox" class="declensionCheckbox" value="IV"> Declinatio IV</label><br>
-        <label><input type="checkbox" class="declensionCheckbox" value="V"> Declinatio V</label><br>
+        <h3>Zvolte deklinace:</h3>
+        <label><input type="checkbox" class="declensionCheckbox" value="I"> I. Deklinace</label><br>
+        <label><input type="checkbox" class="declensionCheckbox" value="II"> II. Deklinace</label><br>
+        <label><input type="checkbox" class="declensionCheckbox" value="III"> III. Deklinace</label><br>
+        <label><input type="checkbox" class="declensionCheckbox" value="IV"> IV. Deklinace</label><br>
+        <label><input type="checkbox" class="declensionCheckbox" value="V"> V. Deklinace</label><br>
 
-        <h3>Choose Cases:</h3>
-        <label><input type="checkbox" class="caseCheckbox" value="Nominative"> Nominative</label><br>
-        <label><input type="checkbox" class="caseCheckbox" value="Genitive"> Genitive</label><br>
-        <label><input type="checkbox" class="caseCheckbox" value="Accusative"> Accusative</label><br>
-        <label><input type="checkbox" class="caseCheckbox" value="Ablative"> Ablative</label><br>
+        <h3>Zvolte pády:</h3>
+        <label><input type="checkbox" class="caseCheckbox" value="Nominative"> Nominativ</label><br>
+        <label><input type="checkbox" class="caseCheckbox" value="Genitive"> Genitiv</label><br>
+        <label><input type="checkbox" class="caseCheckbox" value="Accusative"> Akusativ</label><br>
+        <label><input type="checkbox" class="caseCheckbox" value="Ablative"> Ablativ</label><br>
 
-        <h3>Choose Themes:</h3>
+        <h3>Zvolte témata:</h3>
         <label><input type="checkbox" class="weekCheckbox" value="theme1"> Systema skeletale</label><br>
         <label><input type="checkbox" class="weekCheckbox" value="theme2"> Systema musculare</label><br>
 
-        <button onclick="startQuiz()">Start Quiz</button>
+        <button onclick="startQuiz()">Spustit Quiz!</button>
     </div>
 
     <!-- Quiz Interface -->
     <div id="quizContainer">
         <p id="randomWord"></p>
         <p id="randomCaseNumber"></p>
-        <label for="userGuess">Your Answer:</label>
+        <label for="userGuess">Vaše odpověď:</label>
         <input type="text" id="userGuess" onkeydown="handleKeyDown(event)">
-        <button onclick="submitGuess()">Submit</button>
+        <button onclick="submitGuess()">Skontrolovat</button>
     </div>
 
     <footer>
