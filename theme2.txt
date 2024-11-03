@@ -1,0 +1,10 @@
+tendo, tendinis, m
+inervatio, inervationis, f
+insertio, insertionis, f
+abductor, abductoris, m
+adductor, adductoris, m
+extensor, extensoris, m
+flexor, flexoris, m
+origo, originis, f
+foramen, foraminis, n
+cauda, caudae, f
