@@ -3,36 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latinský kvíz</title>
+    <title>Home - MORPHE</title>
     <style>
+        /* Import the MUNI font */
         @font-face {
-                  font-family: 'Muni';
-                  src: url('muni-bold.woff') format('woff');
-                  font-weight: bold;
-                  font-style: normal;
-                }
+            font-family: 'Muni';
+            src: url('muni-bold.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
-            color: #000 ; /* Default text color */
+            color: #000;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
         }
 
-        h1 {font-family: 'Muni', Arial, sans-serif;
-            color: #f01928; /* Heading color */
+        /* Navigation Menu */
+        .navbar {
+            width: 100%;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
         }
 
-        h2 {
-            color: #0000dc; /* Heading 2 color */
+        .navbar a {
+            font-family: Arial, sans-serif;
+            color: #0000dc;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #f01928;
+            text-decoration: underline;
+        }
+
+        /* Header */
+        header {
+            padding: 20px;
+            width: 100%;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Muni', Arial, sans-serif;
+            color: #f01928;
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        /* Section Content */
+        .content {
+            max-width: 800px;
+            padding: 20px;
+            color: #333;
+        }
+
+        .content h2 {
+            color: #0000dc;
+            font-size: 28px;
+            margin: 20px 0;
+        }
+
+        .content p {
+            line-height: 1.6;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .content a {
+            color: #f01928;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <h1>MORPHE</h1>
-    <h2>Vítejte v beta verzi kvízu MORPHE na skloňování anatomických termínů. Tento kvíz byl vytvořen díky financování Juniorské Akademie MUNI. </h2>
-    <p>Garant JA MUNI: doc. MUDr. Marek Joukal, PhD.</p>
-    <p>Garantka latiny: Mgr. Kateřina Pořízková, PhD.</p>
-    <a href="code.html">Link na kvíz.</a> 
-    <p>Last update: 3.11.2024 16:39</p>
-    <img src="med-lg-eng-rgb.png" alt="MuniMed logo" style="width:105px;height:80px;">
-    <p>© LM 2024</p>
+
+    <!-- Navigation Menu -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="code.html">Quiz</a>
+    </div>
+
+    <!-- Header Section with Logo and Title -->
+    <header>
+        <img src="med-lg-eng-rgb.png" alt="MUNI MED Logo" /> <!-- Make sure this file path is correct -->
+        <h1>MORPHE</h1>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="content">
+        <h2>Welcome to MORPHE</h2>
+        <p>We are dedicated to helping medical students master Latin anatomical terminology through innovative, interactive learning tools.</p>
+
+        <h2>Acknowledgment of Support</h2>
+        <p>Our development is made possible thanks to the generous financial support of <strong>Juniorská akademie MUNI</strong>. Their commitment to advancing educational resources for students has been invaluable to MORPHE’s success and growth.</p>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; MUNI MED 2024. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
