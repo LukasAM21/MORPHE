@@ -60,7 +60,7 @@
         <button onclick="submitGuess()">Vložit</button>
     </div>
 
-    <p>Last update: 3.11.2024 16:35</p>
+    <p>Last update: 3.11.2024 16:47</p>
     <p>© LM 2024</p>
 
     <script>
@@ -89,7 +89,7 @@
             }
         
         let wordsData = []; // To store words loaded from weeks
-        const cases = ['Nominative', 'Genitive'];
+        var cases = ['Nominative', 'Genitive', 'Accusative', 'Ablative'];
         const numbers = ['Singular', 'Plural'];
         let selectedDeclensions = [];
         let currentWord, currentCase, currentNumber;
@@ -97,9 +97,10 @@
         function startQuiz() {
             selectedDeclensions = getSelectedDeclensions();
             const selectedWeeks = getSelectedWeeks();
+            const selectedCases = getSelectedCases();
 
-            if (selectedDeclensions.length === 0 || selectedWeeks.length === 0) {
-                alert("Prosím, vyberte alespoň jednu deklinaci a jeden týden.");
+            if (selectedDeclensions.length === 0 || selectedWeeks.length === 0 | selectedCases.length === 0) {
+                alert("Prosím, vyberte alespoň jednu deklinaci, jeden pád a jeden týden.");
                 return;
             }
 
@@ -120,6 +121,19 @@
             return [...document.getElementsByClassName('weekCheckbox')]
                 .filter(cb => cb.checked)
                 .map(cb => cb.value);
+        }
+
+        function getSelectedCases() {
+            var checkboxes = document.getElementsByClassName('caseCheckbox');
+            var selected = [];
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    selected.push(checkboxes[i].value);
+                }
+            }
+
+            return selected;
         }
 
         function loadWeekData(weeks, callback) {
