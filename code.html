@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latin Declensions Quiz</title>
+    <title>Latinský kvíz</title>
     <style>
+        @font-face {
+                  font-family: 'Muni';
+                  src: url('muni-bold.woff') format('woff');
+                  font-weight: bold;
+                  font-style: normal;
+                }
         body {
             font-family: Arial, sans-serif;
-            color: #000; /* Default text color */
+            color: #000 ; /* Default text color */
         }
 
-        h1 {
+        h1 {font-family: 'Muni', Arial, sans-serif;
             color: #f01928; /* Heading color */
         }
 
@@ -20,33 +26,62 @@
     </style>
 </head>
 <body>
-    <h1>Declinationes Linguae Latinae</h1>
-    <p>Practice nominative and genitive forms across different declensions and weekly lexis sets.</p>
+    <h1>Základy lékařské terminologie</h1>
+    <p>Vítejte v beta verzi kvízu skloňování anatomických termínů.</p>
 
-    <h2>Select the declensions you want to practice:</h2>
+    <h2>Vyberte si deklinace, které chcete procvičovat:</h2>
     <label><input type="checkbox" class="declensionCheckbox" value="I"> Declinatio I</label><br>
     <label><input type="checkbox" class="declensionCheckbox" value="II"> Declinatio II</label><br>
     <label><input type="checkbox" class="declensionCheckbox" value="III"> Declinatio III</label><br>
     <label><input type="checkbox" class="declensionCheckbox" value="IV"> Declinatio IV</label><br>
     <label><input type="checkbox" class="declensionCheckbox" value="V"> Declinatio V</label><br>
 
-    <h2>Select the weeks you want to practice:</h2>
-    <label><input type="checkbox" class="weekCheckbox" value="week1">week1</label><br>
-    <label><input type="checkbox" class="weekCheckbox" value="week2">week2</label><br>
-    <label><input type="checkbox" class="weekCheckbox" value="week3">week3</label><br>
+    <h2>Vyberte si týdny, které chcete procvičovat:</h2>
+    <label><input type="checkbox" class="weekCheckbox" value="week1">Týden 1</label><br>
+    <label><input type="checkbox" class="weekCheckbox" value="week2">Týden 2</label><br>
+    <label><input type="checkbox" class="weekCheckbox" value="week3">Týden 3</label><br>
+    <label><input type="checkbox" class="weekCheckbox" value="week4">Týden 4</label><br>
 
 
-    <button onclick="startQuiz()">Start Quiz</button>
+
+    <button onclick="startQuiz()">Spusti kvíz</button>
 
     <div id="quizContainer" style="display: none;">
         <p id="randomWord"></p>
         <p id="randomCaseNumber"></p>
-        <label for="userGuess">Your guess:</label>
+        <label for="userGuess">Odpověď:</label>
         <input type="text" id="userGuess" onkeydown="handleKeyDown(event)">
-        <button onclick="submitGuess()">Submit</button>
+        <button onclick="submitGuess()">Vložit</button>
     </div>
 
+    <p>Last update: 24.10.2024 16:30</p>
+    <p>© LM 2024</p>
+
     <script>
+        function endsWithTwoConsonants(word) {
+            // Define a regular expression to match two consonants at the end of the word
+            var regex = /[bcdfghjklmnpqrstvwxyz]{2}$/i;
+
+            // Test the word against the regular expression
+            return regex.test(word);
+        }
+
+        function isIStem(word) {
+            // Define a regular expression to match the specified endings
+            var regex = /(al|ar|e)$/i;
+
+            // Test the word against the regular expression
+            return regex.test(word);
+        }
+        
+        function handleKeyDown(event) {
+                // Check if the pressed key is Enter (key code 13)
+                if (event.keyCode === 13) {
+                    // Call the function to submit the guess
+                    submitGuess();
+                }
+            }
+        
         let wordsData = []; // To store words loaded from weeks
         const cases = ['Nominative', 'Genitive'];
         const numbers = ['Singular', 'Plural'];
@@ -58,7 +93,7 @@
             const selectedWeeks = getSelectedWeeks();
 
             if (selectedDeclensions.length === 0 || selectedWeeks.length === 0) {
-                alert("Please select at least one declension and one week.");
+                alert("Prosím, vyberte alespoň jednu deklinaci a jeden týden.");
                 return;
             }
 
@@ -86,7 +121,7 @@
             let loadedFiles = 0;
 
             weeks.forEach(week => {
-                const weekFile = week.replace(" ", "").toLowerCase() + '.txt';
+                const weekFile = week.toLowerCase() + '.txt';
                 console.log("Fetching file:", weekFile); // Log the file being fetched
                 fetch(weekFile)
                     .then(response => {
@@ -123,7 +158,7 @@
 
             const filteredWords = wordsData.filter(word => selectedDeclensions.includes(determineDeclension(word)));
             if (filteredWords.length === 0) {
-                alert("No words available for the selected declensions.");
+                alert("Pro vybranou deklinaci nejsou v slovní zásobě žádná slova.");
                 return;
             }
 
@@ -131,8 +166,8 @@
             const randomCase = getRandomElement(cases);
             const randomNumber = getRandomElement(numbers);
 
-            document.getElementById('randomWord').innerText = 'Word: ' + randomWord.word;
-            document.getElementById('randomCaseNumber').innerText = 'Case/Number: ' + randomCase + ' ' + randomNumber;
+            document.getElementById('randomWord').innerText = 'Slovo: ' + randomWord.word;
+            document.getElementById('randomCaseNumber').innerText = 'Pád a číslo: ' + randomCase + ' ' + randomNumber;
 
             currentWord = randomWord;
             currentCase = randomCase;
@@ -143,9 +178,9 @@
             const userGuess = document.getElementById('userGuess').value.toLowerCase();
             const correctAnswer = checkGuess();
             if (userGuess === correctAnswer) {
-                alert("Correct!");
+                alert("Správně!");
             } else {
-                alert("Incorrect. The correct answer is: " + correctAnswer);
+                alert("Nesprávně. Správná odpověď je: " + correctAnswer);
             }
             getRandomWordAndCase();
         }
@@ -165,14 +200,44 @@
                 trunk = currentWord.genitive.slice(0, -1);
             }
             let correctForm = '';
-
+            // (currentWord.gender === 'n' ? 'a' : 'i')
             // Add logic for Nominative and Genitive
             if (currentCase === 'Nominative') {
+                if (determineDeclension(currentWord) === "I"){
+                correctForm = currentNumber === 'Singular' ? currentWord.word : trunk + "ae";
+                } else if (determineDeclension(currentWord) === "II"){
                 correctForm = currentNumber === 'Singular' ? currentWord.word : trunk + (currentWord.gender === 'n' ? 'a' : 'i');
+                } else if (determineDeclension(currentWord) === "III"){
+                    if (currentNumber === 'Singular'){
+                        correctForm = currentWord.word
+                    } else if (isIStem(currentWord.word)){
+                            correctForm = trunk + "ia";
+                        } else if (currentWord.gender === "n") {correctForm = trunk + "a"
+                        } else {correctForm = trunk + "es"}
+                } else if (determineDeclension(currentWord) === "IV"){
+                correctForm = currentNumber === 'Singular' ? currentWord.word : trunk + (currentWord.gender === 'n' ? 'ua' : 'us');
+                } else {correctForm = currentNumber === 'Singular' ? currentWord.word : trunk + "es";
+                       }
             } else if (currentCase === 'Genitive') {
-                correctForm = currentNumber === 'Singular' ? currentWord.genitive : trunk + (currentWord.gender === 'n' ? 'orum' : 'arum');
+                if (determineDeclension(currentWord) === "I"){
+                correctForm = currentNumber === 'Singular' ? currentWord.genitive : trunk + "arum";
+                } else if (determineDeclension(currentWord) === "II"){
+                correctForm = currentNumber === 'Singular' ? currentWord.genitive : trunk + "orum";
+                } else if (determineDeclension(currentWord) === "III"){
+                    if (currentNumber === 'Singular'){
+                        correctForm = currentWord.genitive
+                    } else if (currentWord.word === "vas"){
+                        correctForm = "vasorum";
+                    } else if (isIStem(currentWord.word) || currentWord.word.endsWith("sis") || currentWord.word.endsWith("xis")){
+                            correctForm = trunk + 'ium';
+                        } else if (endsWithTwoConsonants(trunk) || currentWord.word === trunk + "is"){
+                            correctForm = trunk + 'ium';
+                        } else {correctForm = trunk + 'um'}
+                } else if (determineDeclension(currentWord) === "IV"){
+                correctForm = currentNumber === 'Singular' ? currentWord.genitive : trunk + "uum";
+                } else {correctForm = currentNumber === 'Singular' ? currentWord.genitive : trunk + "erum";
+                       }
             }
-
             return correctForm.toLowerCase();
         }
 
