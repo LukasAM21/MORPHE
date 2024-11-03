@@ -60,7 +60,7 @@
         <button onclick="submitGuess()">Vložit</button>
     </div>
 
-    <p>Last update: 3.11.2024 16:50</p>
+    <p>Last update: 3.11.2024 17:00</p>
     <p>© LM 2024</p>
 
     <script>
@@ -124,16 +124,9 @@
         }
 
         function getSelectedCases() {
-            var checkboxes = document.getElementsByClassName('caseCheckbox');
-            var selected = [];
-
-            for (var i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].checked) {
-                    selected.push(checkboxes[i].value);
-                }
-            }
-
-            return selected;
+            return [...document.getElementsByClassName('caseCheckbox')]
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
         }
 
         function loadWeekData(weeks, callback) {
