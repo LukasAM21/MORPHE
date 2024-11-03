@@ -60,7 +60,7 @@
         <button onclick="submitGuess()">Vložit</button>
     </div>
 
-    <p>Last update: 3.11.2024 17:00</p>
+    <p>Last update: 3.11.2024 17:08</p>
     <p>© LM 2024</p>
 
     <script>
@@ -95,9 +95,10 @@
         let currentWord, currentCase, currentNumber;
 
         function startQuiz() {
-            selectedDeclensions = getSelectedDeclensions();
+            const selectedDeclensions = getSelectedDeclensions();
             const selectedWeeks = getSelectedWeeks();
             const selectedCases = getSelectedCases();
+            console.log(`Line ${selectedCases}`); // Log the raw line
 
             if (selectedDeclensions.length === 0 || selectedWeeks.length === 0 | selectedCases.length === 0) {
                 alert("Prosím, vyberte alespoň jednu deklinaci, jeden pád a jeden týden.");
@@ -177,6 +178,7 @@
 
             const randomWord = filteredWords[Math.floor(Math.random() * filteredWords.length)];
             const randomCase = getRandomElement(selectedCases);
+            console.log(`Line ${randomCase}`); // Log the raw line
             const randomNumber = getRandomElement(numbers);
 
             document.getElementById('randomWord').innerText = 'Slovo: ' + randomWord.word;
