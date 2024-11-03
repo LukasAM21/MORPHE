@@ -28,13 +28,37 @@
             text-align: center;
         }
 
+        /* Navigation Menu */
+        .navbar {
+            width: 100%;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar a {
+            font-family: Arial, sans-serif;
+            color: #0000dc;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #f01928;
+            text-decoration: underline;
+        }
+
         /* Header */
         header {
             padding: 20px;
             width: 100%;
             background-color: #f9f9f9;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            text-align: center;
         }
 
         header img {
@@ -87,6 +111,13 @@
     </style>
 </head>
 <body>
+
+    <!-- Navigation Menu -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="quiz.html">Quiz</a>
+    </div>
 
     <!-- Header Section with Logo and Title -->
     <header>
