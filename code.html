@@ -60,7 +60,7 @@
         <button onclick="submitGuess()">Vložit</button>
     </div>
 
-    <p>Last update: 3.11.2024 16:47</p>
+    <p>Last update: 3.11.2024 16:50</p>
     <p>© LM 2024</p>
 
     <script>
@@ -89,7 +89,7 @@
             }
         
         let wordsData = []; // To store words loaded from weeks
-        var cases = ['Nominative', 'Genitive', 'Accusative', 'Ablative'];
+        let selectedCases = [];
         const numbers = ['Singular', 'Plural'];
         let selectedDeclensions = [];
         let currentWord, currentCase, currentNumber;
