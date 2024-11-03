@@ -60,8 +60,8 @@
         <button onclick="submitGuess()">Vložit</button>
     </div>
 
-    <p>Last update: 3.11.2024 18:02</p>
-    <p>© LM 2024</p>
+    <p>Last update: 3.11.2024 18:11</p>
+    <p>© Lukáš Maronek 2024</p>
 
     <script>
         function endsWithTwoConsonants(word) {
@@ -96,9 +96,9 @@
 
         function startQuiz() {
             selectedDeclensions = getSelectedDeclensions();
-            const selectedWeeks = getSelectedWeeks();
-            const selectedCases = getSelectedCases();
-            console.log(`Line ${selectedCases}`); // Log the raw line
+            selectedWeeks = getSelectedWeeks();
+            selectedCases = getSelectedCases();
+            console.log("Selected cases:", selectedCases);
 
             if (selectedDeclensions.length === 0 || selectedWeeks.length === 0 | selectedCases.length === 0) {
                 alert("Prosím, vyberte alespoň jednu deklinaci, jeden pád a jeden týden.");
@@ -169,24 +169,30 @@
 
         function getRandomWordAndCase() {
             clearInputField();
-
+        
             const filteredWords = wordsData.filter(word => selectedDeclensions.includes(determineDeclension(word)));
             if (filteredWords.length === 0) {
                 alert("Pro vybranou deklinaci nejsou v slovní zásobě žádná slova.");
                 return;
             }
-
+        
             const randomWord = filteredWords[Math.floor(Math.random() * filteredWords.length)];
-            const randomCase = selectedCases[Math.floor(Math.random() * selectedCases.length)];
-            console.log(`Random case ${randomCase}`); // Log the raw line
-            const randomNumber = getRandomElement(numbers);
-
-            document.getElementById('randomWord').innerText = 'Slovo: ' + randomWord.word;
-            document.getElementById('randomCaseNumber').innerText = 'Pád a číslo: ' + randomCase + ' ' + randomNumber;
-
-            currentWord = randomWord;
-            currentCase = randomCase;
-            currentNumber = randomNumber;
+            // Check if selectedCases is not empty before choosing a case
+            if (selectedCases.length > 0) {
+                const randomCase = selectedCases[Math.floor(Math.random() * selectedCases.length)];
+                console.log("Chosen case:", randomCase); // Log the chosen case
+                const randomNumber = getRandomElement(numbers);
+        
+                document.getElementById('randomWord').innerText = 'Slovo: ' + randomWord.word;
+                document.getElementById('randomCaseNumber').innerText = 'Pád a číslo: ' + randomCase + ' ' + randomNumber;
+        
+                currentWord = randomWord;
+                currentCase = randomCase;
+                currentNumber = randomNumber;
+            } else {
+                console.error("No cases selected.");
+                alert("Vyberte alespoň jeden pád.");
+            }
         }
 
         function submitGuess() {
