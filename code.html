@@ -183,7 +183,7 @@
             }
 
             const randomWord = filteredWords[Math.floor(Math.random() * filteredWords.length)];
-            const randomCase = getRandomElement(cases);
+            const randomCase = getRandomElement(selectedCases);
             const randomNumber = getRandomElement(numbers);
 
             document.getElementById('randomWord').innerText = 'Slovo: ' + randomWord.word;
