@@ -60,7 +60,7 @@
         <button onclick="submitGuess()">Vložit</button>
     </div>
 
-    <p>Last update: 3.11.2024 18:11</p>
+    <p>Last update: 3.11.2024 18:19</p>
     <p>© Lukáš Maronek 2024</p>
 
     <script>
@@ -189,6 +189,9 @@
                 currentWord = randomWord;
                 currentCase = randomCase;
                 currentNumber = randomNumber;
+                if (currentCase === "Nominative"){
+                    currentNumber = "Plural";
+                }
             } else {
                 console.error("No cases selected.");
                 alert("Vyberte alespoň jeden pád.");
