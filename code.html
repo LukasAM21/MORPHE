@@ -60,7 +60,7 @@
         <button onclick="submitGuess()">Vložit</button>
     </div>
 
-    <p>Last update: 3.11.2024 17:59</p>
+    <p>Last update: 3.11.2024 18:02</p>
     <p>© LM 2024</p>
 
     <script>
@@ -177,8 +177,8 @@
             }
 
             const randomWord = filteredWords[Math.floor(Math.random() * filteredWords.length)];
-            const randomCase = getRandomElement(selectedCases);
-            console.log(`Line ${randomCase}`); // Log the raw line
+            const randomCase = selectedCases[Math.floor(Math.random() * selectedCases.length)];
+            console.log(`Random case ${randomCase}`); // Log the raw line
             const randomNumber = getRandomElement(numbers);
 
             document.getElementById('randomWord').innerText = 'Slovo: ' + randomWord.word;
