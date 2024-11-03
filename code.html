@@ -60,7 +60,7 @@
         <button onclick="submitGuess()">Vložit</button>
     </div>
 
-    <p>Last update: 3.11.2024 18:26</p>
+    <p>Last update: 3.11.2024 18:30</p>
     <p>© Lukáš Maronek 2024</p>
 
     <script>
@@ -182,10 +182,7 @@
                 const randomCase = selectedCases[Math.floor(Math.random() * selectedCases.length)];
                 console.log("Chosen case:", randomCase); // Log the chosen case
                 const randomNumber = getRandomElement(numbers);
-        
-                document.getElementById('randomWord').innerText = 'Slovo: ' + randomWord.word;
-                document.getElementById('randomCaseNumber').innerText = 'Pád a číslo: ' + randomCase + ' ' + randomNumber;
-        
+    
                 currentWord = randomWord;
                 currentCase = randomCase;
                 currentNumber = randomNumber;
@@ -193,6 +190,10 @@
                     currentNumber = "Plural";
                     console.log("Current case is", currentCase, "current number should be now plural and is:", currentNumber); // Log the chosen case
                 }
+
+                document.getElementById('randomWord').innerText = 'Slovo: ' + currentWord.word;
+                document.getElementById('randomCaseNumber').innerText = 'Pád a číslo: ' + currentCase + ' ' + currentNumber;
+                
             } else {
                 console.error("No cases selected.");
                 alert("Vyberte alespoň jeden pád.");
