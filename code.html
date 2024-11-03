@@ -3,67 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latinský kvíz</title>
+    <title>Quiz - MORPHE</title>
     <style>
+        /* Import the MUNI font */
         @font-face {
-                  font-family: 'Muni';
-                  src: url('muni-bold.woff') format('woff');
-                  font-weight: bold;
-                  font-style: normal;
-                }
+            font-family: 'Muni';
+            src: url('muni-bold.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
-            color: #000 ; /* Default text color */
+            color: #000;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
         }
 
-        h1 {font-family: 'Muni', Arial, sans-serif;
-            color: #f01928; /* Heading color */
+        /* Navigation Menu */
+        .navbar {
+            width: 100%;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
         }
 
-        h2 {
-            color: #0000dc; /* Heading 2 color */
+        .navbar a {
+            font-family: Arial, sans-serif;
+            color: #0000dc;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #f01928;
+            text-decoration: underline;
+        }
+
+        /* Header */
+        header {
+            padding: 20px;
+            width: 100%;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Muni', Arial, sans-serif;
+            color: #f01928;
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        /* Section Content */
+        .content {
+            max-width: 800px;
+            padding: 20px;
+            color: #333;
+        }
+
+        .content h2 {
+            color: #0000dc;
+            font-size: 28px;
+            margin: 20px 0;
+        }
+
+        .content p {
+            line-height: 1.6;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Quiz Container */
+        #quizContainer {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        #quizContainer label, #quizContainer input, #quizContainer button {
+            display: block;
+            margin: 10px auto;
+            font-size: 16px;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <h1>MORPHE</h1>
-    <p>Vítejte v beta verzi kvízu skloňování anatomických termínů.</p>
-    <a href="index.html">Zpět na domovskou stránku.</a> 
 
-    <h2>Vyberte si deklinace, které chcete procvičovat:</h2>
-    <label><input type="checkbox" class="declensionCheckbox" value="I"> Declinatio I</label><br>
-    <label><input type="checkbox" class="declensionCheckbox" value="II"> Declinatio II</label><br>
-    <label><input type="checkbox" class="declensionCheckbox" value="III"> Declinatio III</label><br>
-    <label><input type="checkbox" class="declensionCheckbox" value="IV"> Declinatio IV</label><br>
-    <label><input type="checkbox" class="declensionCheckbox" value="V"> Declinatio V</label><br>
+    <!-- Navigation Menu -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="code.html">Quiz</a>
+    </div>
 
-    <h2>Vyberte si pády, které chcete procvičovat:</h2>
+    <!-- Header Section with Logo and Title -->
+    <header>
+        <img src="med-lg-eng-rgb.png" alt="MUNI MED Logo" /> <!-- Make sure this file path is correct -->
+        <h1>MORPHE Quiz</h1>
+    </header>
 
-    <label><input type="checkbox" class="caseCheckbox" value="Nominative"> Nominativ</label><br>
-    <label><input type="checkbox" class="caseCheckbox" value="Genitive"> Genitiv</label><br>
-    <label><input type="checkbox" class="caseCheckbox" value="Accusative"> Akuzativ</label><br>
-    <label><input type="checkbox" class="caseCheckbox" value="Ablative"> Ablativ</label><br>
+    <!-- Main Content Section -->
+    <div class="content">
+        <h2>Select Your Practice Options</h2>
+        <p>Welcome to the MORPHE Quiz! Select declensions, cases, and themes to practice your knowledge of Latin medical terminology.</p>
 
-    <h2>Vyberte si témata, která chcete procvičovat:</h2>
-    <label><input type="checkbox" class="weekCheckbox" value="theme1"> Systema skeletale</label><br>
-    <label><input type="checkbox" class="weekCheckbox" value="theme2"> Systema musculare</label><br>
+        <h3>Choose Declensions:</h3>
+        <label><input type="checkbox" class="declensionCheckbox" value="I"> Declinatio I</label><br>
+        <label><input type="checkbox" class="declensionCheckbox" value="II"> Declinatio II</label><br>
+        <label><input type="checkbox" class="declensionCheckbox" value="III"> Declinatio III</label><br>
+        <label><input type="checkbox" class="declensionCheckbox" value="IV"> Declinatio IV</label><br>
+        <label><input type="checkbox" class="declensionCheckbox" value="V"> Declinatio V</label><br>
 
+        <h3>Choose Cases:</h3>
+        <label><input type="checkbox" class="caseCheckbox" value="Nominative"> Nominative</label><br>
+        <label><input type="checkbox" class="caseCheckbox" value="Genitive"> Genitive</label><br>
+        <label><input type="checkbox" class="caseCheckbox" value="Accusative"> Accusative</label><br>
+        <label><input type="checkbox" class="caseCheckbox" value="Ablative"> Ablative</label><br>
 
+        <h3>Choose Themes:</h3>
+        <label><input type="checkbox" class="weekCheckbox" value="theme1"> Systema skeletale</label><br>
+        <label><input type="checkbox" class="weekCheckbox" value="theme2"> Systema musculare</label><br>
 
-    <button onclick="startQuiz()">Spusti kvíz</button>
+        <button onclick="startQuiz()">Start Quiz</button>
+    </div>
 
-    <div id="quizContainer" style="display: none;">
+    <!-- Quiz Interface -->
+    <div id="quizContainer">
         <p id="randomWord"></p>
         <p id="randomCaseNumber"></p>
-        <label for="userGuess">Odpověď:</label>
+        <label for="userGuess">Your Answer:</label>
         <input type="text" id="userGuess" onkeydown="handleKeyDown(event)">
-        <button onclick="submitGuess()">Vložit</button>
+        <button onclick="submitGuess()">Submit</button>
     </div>
-    <p>N.B. Zatiaľ nepozná tvary acc a abl, správne vyhodnocuje nom a gen; nom je vždy pl; korektne implementovaný možný výber pád/deklinácia/téma</p>
-    <p>Last update: 3.11.2024 18:35</p>
-    <p>© Lukáš Maronek 2024</p>
+
+    <footer>
+        <p>&copy; MUNI MED 2024. All rights reserved.</p>
+    </footer>
 
     <script>
+        
         function endsWithTwoConsonants(word) {
             // Define a regular expression to match two consonants at the end of the word
             var regex = /[bcdfghjklmnpqrstvwxyz]{2}$/i;
