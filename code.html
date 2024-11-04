@@ -406,32 +406,25 @@
                     }
                 } else {correctForm = currentNumber === 'Singular' ? trunk + "em" : trunk + "es";
                        }   
-            } else if (currentCase === 'Ablative'){
-                if (determineDeclension(currentWord) === "I"){
+            } else if (currentCase === 'Ablative') {
+                if (determineDeclension(currentWord) === "I") {
                     correctForm = currentNumber === 'Singular' ? trunk + "a" : trunk + "is";
                     console.log("Správny tvar pre abl", correctForm);
-                } else if (determineDeclension(currentWord) === "II"){
-                        correctForm = currentNumber === 'Singular' ? trunk + "o" : trunk + "is";
-                } else if (determineDeclension(currentWord) === "III"){
-                    if (currentNumber === 'Singular'){
-                        if (isIStem(currentWord.word)){
-                            correctForm = trunk + "i";
-                        } else {
-                            correctForm = trunk + 'e';
-                        }
+                } else if (determineDeclension(currentWord) === "II") {
+                    correctForm = currentNumber === 'Singular' ? trunk + "o" : trunk + "is";
+                } else if (determineDeclension(currentWord) === "III") {
+                    if (currentNumber === 'Singular') {
+                        correctForm = isIStem(currentWord.word) ? trunk + "i" : trunk + "e";
                     } else {
-                        if (currentWord.word === "vas"){
-                            correctForm = "vasis";
-                        } else {
-                            correctForm = trunk + "ibus";
-                        }
+                        correctForm = currentWord.word === "vas" ? "vasis" : trunk + "ibus";
                     }
-                } else if (determineDeclension(currentWord) === "IV"){
-                        correctForm = currentNumber === 'Singular' ? trunk + "u" : trunk + "ibus";
-                    }
-                } else {correctForm = currentNumber === 'Singular' ? trunk + "e" : trunk + "ebus";
-                       }
+                } else if (determineDeclension(currentWord) === "IV") {
+                    correctForm = currentNumber === 'Singular' ? trunk + "u" : trunk + "ibus";
+                } else { // For declension V or default case
+                    correctForm = currentNumber === 'Singular' ? trunk + "e" : trunk + "ebus";
+                }
             }
+
             return correctForm.toLowerCase();
         }
 
