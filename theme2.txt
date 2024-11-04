@@ -8,3 +8,8 @@ flexor, flexoris, m
 origo, originis, f
 foramen, foraminis, n
 cauda, caudae, f
+rete, retis, n
+animal, animalis, n
+vas, vasis, n
+genu, genus, n
+dies, diei, m
