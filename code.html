@@ -320,7 +320,7 @@
         }
 
         function determineDeclension(word) {
-            if (word.genitive.endsWith("ei") && (word.gender === "f")) return "V";
+            if (word.genitive.endsWith("ei") && (word.word.endsWith("es"))) return "V";
             if (word.genitive.endsWith("ae")) return "I";
             if (word.genitive.endsWith("i")) return "II";
             if (word.genitive.endsWith("is")) return "III";
