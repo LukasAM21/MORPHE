@@ -167,7 +167,7 @@
     </div>
 
     <footer>
-        <p>&copy; MUNI MED 2024. All rights reserved. Last update: 4.11.2024 20:35</p>
+        <p>&copy; MUNI MED 2024. All rights reserved. Last update: 4.11.2024 21:02</p>
     </footer>
 
     <script>
@@ -405,6 +405,27 @@
                         correctForm = currentNumber === 'Singular' ? trunk + "um" : trunk + "us";
                     }
                 } else {correctForm = currentNumber === 'Singular' ? trunk + "em" : trunk + "es";
+                       }
+            } else {
+                if (determineDeclension(currentWord) === "I"){
+                correctForm = currentNumber === 'Singular' ? trunk + "a" : trunk + "is";
+                } else if (determineDeclension(currentWord) === "II"){
+                        correctForm = currentNumber === 'Singular' ? trunk + "o" : trunk + "is";
+                } else if (determineDeclension(currentWord) === "III"){
+                    if (currentNumber === 'Singular'){
+                        if (isIStem(currentWord.word)){
+                            correctForm = trunk + "i";
+                        } else {
+                            correctForm = trunk + 'e';
+                        }
+                    } else {
+                            correctForm = trunk + "ibus";
+                        }
+                    }
+                } else if (determineDeclension(currentWord) === "IV"){
+                        correctForm = currentNumber === 'Singular' ? trunk + "u" : trunk + "ibus";
+                    }
+                } else {correctForm = currentNumber === 'Singular' ? trunk + "e" : trunk + "ebus";
                        }
             }
             return correctForm.toLowerCase();
