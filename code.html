@@ -330,7 +330,7 @@
 
         function checkGuess() {
             let trunk = currentWord.genitive.slice(0, -2);
-            if (currentWord.genitive.endsWith('i')) {
+            if (determineDeclension(currentWord) === "II") {
                 trunk = currentWord.genitive.slice(0, -1);
             }
             let correctForm = '';
