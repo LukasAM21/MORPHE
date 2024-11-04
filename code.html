@@ -167,7 +167,7 @@
     </div>
 
     <footer>
-        <p>&copy; MUNI MED 2024. All rights reserved. Last update: 3.11.2024 20:37</p>
+        <p>&copy; MUNI MED 2024. All rights reserved. Last update: 4.11.2024 20:35</p>
     </footer>
 
     <script>
@@ -370,6 +370,41 @@
                 } else if (determineDeclension(currentWord) === "IV"){
                 correctForm = currentNumber === 'Singular' ? currentWord.genitive : trunk + "uum";
                 } else {correctForm = currentNumber === 'Singular' ? currentWord.genitive : trunk + "erum";
+                       }
+            } else if (currentCase === 'Accusative'){
+                if (determineDeclension(currentWord) === "I"){
+                correctForm = currentNumber === 'Singular' ? trunk + "am" : trunk + "as";
+                } else if (determineDeclension(currentWord) === "II"){
+                    if (currentWord.gender === "n"){
+                        correctForm = currentNumber === 'Singular' ? currentWord.word : trunk + "a";
+                    } else {
+                correctForm = currentNumber === 'Singular' ? trunk + "um" : trunk + "os";
+                    }
+                } else if (determineDeclension(currentWord) === "III"){
+                    if (currentNumber === 'Singular'){
+                        if (currentWord.gender === "n"){
+                            correctForm = currentWord.word
+                        } else if (isIStem(currentWord.word) || currentWord.word.endsWith("sis") || currentWord.word.endsWith("xis")){
+                            correctForm = trunk + 'im';
+                        } else {
+                            correctForm = trunk + 'em';
+                        }
+                    } else {
+                        if (isIStem(currentWord.word)){
+                            correctForm = trunk + "ia";
+                        } else if (currentWord.gender === "n") {
+                            correctForm = trunk + "a";
+                        } else {
+                            correctForm = trunk + "es";
+                        }
+                    }
+                } else if (determineDeclension(currentWord) === "IV"){
+                    if (currentWord.gender === "n") {
+                        correctForm = currentNumber === 'Singular' ? currentWord.word : trunk + "ua";
+                    } else {
+                        correctForm = currentNumber === 'Singular' ? trunk + "um" : trunk + "us";
+                    }
+                } else {correctForm = currentNumber === 'Singular' ? trunk + "em" : trunk + "es";
                        }
             }
             return correctForm.toLowerCase();
