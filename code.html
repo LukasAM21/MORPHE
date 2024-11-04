@@ -405,10 +405,8 @@
                         correctForm = currentNumber === 'Singular' ? trunk + "um" : trunk + "us";
                     }
                 } else {correctForm = currentNumber === 'Singular' ? trunk + "em" : trunk + "es";
-                       }
-
-                
-            } else {
+                       }   
+            } else if (currentCase === 'Ablative'){
                 if (determineDeclension(currentWord) === "I"){
                     correctForm = currentNumber === 'Singular' ? trunk + "a" : trunk + "is";
                     console.log("Správny tvar pre abl", correctForm);
