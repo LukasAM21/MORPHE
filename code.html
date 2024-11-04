@@ -410,7 +410,8 @@
                 
             } else {
                 if (determineDeclension(currentWord) === "I"){
-                correctForm = currentNumber === 'Singular' ? trunk + "a" : trunk + "is";
+                    correctForm = currentNumber === 'Singular' ? trunk + "a" : trunk + "is";
+                    console.log("Správny tvar pre abl", correctForm);
                 } else if (determineDeclension(currentWord) === "II"){
                         correctForm = currentNumber === 'Singular' ? trunk + "o" : trunk + "is";
                 } else if (determineDeclension(currentWord) === "III"){
