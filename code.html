@@ -406,6 +406,8 @@
                     }
                 } else {correctForm = currentNumber === 'Singular' ? trunk + "em" : trunk + "es";
                        }
+
+                
             } else {
                 if (determineDeclension(currentWord) === "I"){
                 correctForm = currentNumber === 'Singular' ? trunk + "a" : trunk + "is";
@@ -419,6 +421,9 @@
                             correctForm = trunk + 'e';
                         }
                     } else {
+                        if (currentWord.word === "vas"){
+                            correctForm = "vasis";
+                        } else {
                             correctForm = trunk + "ibus";
                         }
                     }
